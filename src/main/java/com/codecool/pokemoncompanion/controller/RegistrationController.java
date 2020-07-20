@@ -16,22 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class RegistrationController {
 
-    private RegistrationService registrationService;
+    private final RegistrationService registrationService;
 
     @PostMapping("/registration")
-    public ResponseEntity<String> registerAccount(@RequestBody UserRegistrationEntity data) {
-        try {
-            String username = data.getName();
-            String password = data.getPassword();
-            String email = data.getEmail();
-            if (registrationService.isUsernameAvailable(username)) {
-                registrationService.registerUser(username, password, email);
-                return new ResponseEntity<>(HttpStatus.ACCEPTED);
-            }
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<HttpStatus> registerAccount(@RequestBody UserRegistrationEntity data) {
+        return registrationService.registerAccount(data);
     }
 
 }
