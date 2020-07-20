@@ -4,21 +4,20 @@ package com.codecool.pokemoncompanion.controller;
 import com.codecool.pokemoncompanion.model.User;
 import com.codecool.pokemoncompanion.repository.UserRepository;
 import com.codecool.pokemoncompanion.service.FriendService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
 @CrossOrigin
 @RestController
+@AllArgsConstructor
 @RequestMapping("/user")
 public class FriendController {
 
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    FriendService friendService;
+    private final FriendService friendService;
 
     @PutMapping("/{userId}/request-friend/{friendId}")
     public void requestFriendship(@PathVariable("userId") Long userid, @PathVariable("friendId") Long friendId) {

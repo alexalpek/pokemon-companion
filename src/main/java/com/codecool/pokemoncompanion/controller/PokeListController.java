@@ -17,10 +17,10 @@ import java.util.List;
 @RestController
 public class PokeListController {
 
-    private PokemonCreator pokemonCreator;
-    private PokeAPIService pokeAPIService;
-    private PokeSaveService pokeSaveService;
-    private UsersPokemonService usersPokemonService;
+    private final PokemonCreator pokemonCreator;
+    private final PokeAPIService pokeAPIService;
+    private final PokeSaveService pokeSaveService;
+    private final UsersPokemonService usersPokemonService;
 
     @Autowired
     public PokeListController(PokemonCreator pokemonCreator, PokeAPIService pokeAPIService, PokeSaveService pokeSaveService, UsersPokemonService usersPokemonService) {
