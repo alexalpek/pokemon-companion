@@ -17,8 +17,7 @@ public class CalculatorController {
 
     @PostMapping("/ivcalculator")
     public String sendIvValue(@RequestBody IVValues ivValues) {
-        String result = calculatorService.calculateIV(ivValues.getHp(), ivValues.getAttack(), ivValues.getDefense());
-        return result;
+        return calculatorService.calculateIV(ivValues.getHp(), ivValues.getAttack(), ivValues.getDefense());
     }
 
 }
